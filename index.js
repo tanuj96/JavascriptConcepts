@@ -21,3 +21,25 @@ getNames(names[0],names[1],names[2]);
 getNames(...names); //Spread
 
 getNames(names);
+
+
+//Rest with Object
+
+var students={
+    name:"Tanuj",
+    age:"27",
+    hobbies:["Cricket","Singing"]
+}
+// const age=students.age;
+const {age,...rest}=students; //Object Destructuring and Rest Operation
+console.log(age);
+console.log(rest);
+
+//Spread with Object
+
+var newStudent={
+    ...students,
+    age:"28"
+}
+
+console.log(newStudent)
