@@ -45,66 +45,85 @@
 //Async JS Programming
 //Callbacks , Promises, Async , Await
 
-const datas = [
-  {
-    name: "Tanuj",
-    Profession: "Software Engineer",
-  },
-  {
-    name: "Anuj",
-    Profession: "Software Engineer",
-  },
-];
+// const datas = [
+//   {
+//     name: "Tanuj",
+//     Profession: "Software Engineer",
+//   },
+//   {
+//     name: "Anuj",
+//     Profession: "Software Engineer",
+//   },
+// ];
 
-function getDatas() {
-  setTimeout(() => {
-    let output = "";
-    datas.forEach((data, index) => {
-      output += `<li>${data.name}</li>`;
-    });
-    document.body.innerHTML = output;
-  }, 1000);
-}
+// function getDatas() {
+//   setTimeout(() => {
+//     let output = "";
+//     datas.forEach((data, index) => {
+//       output += `<li>${data.name}</li>`;
+//     });
+//     document.body.innerHTML = output;
+//   }, 1000);
+// }
 
-function createData(newData, callback) {
-  setTimeout(() => {
-    datas.push(newData);
-    callback();
-  }, 2000);
-}
-// createData({ name: "Vivek", Profession: "Software Engineer" },getDatas); //Callback
+// function createData(newData, callback) {
+//   setTimeout(() => {
+//     datas.push(newData);
+//     callback();
+//   }, 2000);
+// }
+// // createData({ name: "Vivek", Profession: "Software Engineer" },getDatas); //Callback
 
-function createData1(newData) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      datas.push(newData);
-      let error = false;
-      if (!error) {
-        resolve();
-      } else {
-        reject("Something is wrong");
-      }
-    }, 2000);
-  });
-}
+// function createData1(newData) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       datas.push(newData);
+//       let error = false;
+//       if (!error) {
+//         resolve();
+//       } else {
+//         reject("Something is wrong");
+//       }
+//     }, 2000);
+//   });
+// }
 
-// createData1({ name: "Vivek", Profession: "Software Engineer" })
-//   .then(getDatas)
-//   .catch((err) => console.log(err)); //Promise
+// // createData1({ name: "Vivek", Profession: "Software Engineer" })
+// //   .then(getDatas)
+// //   .catch((err) => console.log(err)); //Promise
 
+// //Async & Await
 
-//Async & Await
+// function createData2(newData) {
+//     setTimeout(() => {
+//       datas.push(newData);
+//     }, 2000);
+//   }
 
-function createData2(newData) {
-    setTimeout(() => {
-      datas.push(newData);
-    }, 2000);
-  }
+//  async function start(){
+//     await createData1({ name: "Vivek", Profession: "Software Engineer" });
+//     getDatas();
+// }
 
+// start();
 
- async function start(){
-    await createData1({ name: "Vivek", Profession: "Software Engineer" });
-    getDatas();
-}
+//CLOSURES
 
-start();
+var sum = function (a, b, c) {
+  
+  return {
+    getSumTwo:function(){
+      return a+b;
+    },
+    getSumThree:function(){
+      return a+b+c;
+    }
+  };
+};
+var store = sum(3, 4, 5);
+console.log(store.getSumTwo());
+console.log(store.getSumThree());
+
+var store1 = sum(7, 8, 9);
+console.log(store.getSumTwo());
+console.log(store.getSumThree());
